@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Databricks
+.dbc/
+*.dbc
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
+venv*
+.envrc
+
+# Data
+*.csv
+*.parquet
+*.json
+!datasets/
