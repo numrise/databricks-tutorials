@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Spark SQL - Databricks Tutorials</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Spark SQL";
+        var mkdocs_page_input_path = "spark/05-spark-sql-basics.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Databricks Tutorials
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Spark</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-installation-setup/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-spark-fundamentals/">Fundamentals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-rdds-vs-dataframes/">RDDs vs DataFrames</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04-working-with-dataframes/">Working with DataFrames</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Spark SQL</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-spark-sql">What is Spark SQL?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#creating-temporary-views">Creating Temporary Views</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sql-queries">SQL Queries</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#common-sql-functions">Common SQL Functions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#aggregation">Aggregation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#string-functions">String Functions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#date-functions">Date Functions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#conditional-functions">Conditional Functions</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dataframe-api-vs-sql">DataFrame API vs SQL</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#best-practices">Best Practices</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06-reading-writing-data/">Reading & Writing Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../performance-tuning/">Performance Tuning</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Databricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/setup/">Setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/workspace/">Workspace & Clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/notebooks/">Notebooks</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Azure Databricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/setup/">Setup on Azure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/integration/">Integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/cost/">Cost Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/setup/">Setup Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/troubleshooting/">Troubleshooting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/resources/">Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/best-practices/">Best Practices</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">Contributing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../MIGRATION_SUMMARY/">Migration Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../PROJECT_COMPLETION/">Completion Report</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Databricks Tutorials</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Spark</li>
+      <li class="breadcrumb-item active">Spark SQL</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="spark-sql">Spark SQL</h1>
+<h2 id="what-is-spark-sql">What is Spark SQL?</h2>
+<p>Spark SQL is a Spark module for structured data processing, providing:
+- SQL query interface for DataFrames
+- Optimized performance via Catalyst optimizer
+- Support for multiple data formats
+- Integration with external databases</p>
+<h2 id="creating-temporary-views">Creating Temporary Views</h2>
+<pre><code class="language-python"># Session-scoped temporary view
+df.createOrReplaceTempView(&quot;employees&quot;)
+
+# Global temporary view
+df.createGlobalTempView(&quot;employees_global&quot;)
+
+# Permanent table
+df.write.mode(&quot;overwrite&quot;).saveAsTable(&quot;employees_table&quot;)
+</code></pre>
+<h2 id="sql-queries">SQL Queries</h2>
+<pre><code class="language-python"># Basic SELECT
+spark.sql(&quot;SELECT * FROM employees&quot;).show()
+
+# SELECT specific columns
+spark.sql(&quot;&quot;&quot;
+    SELECT name, salary FROM employees 
+    WHERE salary &gt; 80000
+&quot;&quot;&quot;).show()
+
+# Aggregation
+spark.sql(&quot;&quot;&quot;
+    SELECT department, COUNT(*) as count, AVG(salary) as avg_salary
+    FROM employees
+    GROUP BY department
+    ORDER BY avg_salary DESC
+&quot;&quot;&quot;).show()
+
+# JOIN
+spark.sql(&quot;&quot;&quot;
+    SELECT e.name, d.department_name
+    FROM employees e
+    JOIN departments d ON e.dept_id = d.dept_id
+&quot;&quot;&quot;).show()
+
+# Window functions
+spark.sql(&quot;&quot;&quot;
+    SELECT 
+        name, 
+        salary,
+        ROW_NUMBER() OVER (ORDER BY salary DESC) as rank
+    FROM employees
+&quot;&quot;&quot;).show()
+</code></pre>
+<h2 id="common-sql-functions">Common SQL Functions</h2>
+<h3 id="aggregation">Aggregation</h3>
+<pre><code class="language-python">spark.sql(&quot;&quot;&quot;
+    SELECT 
+        COUNT(*) as total_rows,
+        SUM(salary) as total_salary,
+        AVG(salary) as avg_salary,
+        MIN(salary) as min_salary,
+        MAX(salary) as max_salary
+    FROM employees
+&quot;&quot;&quot;).show()
+</code></pre>
+<h3 id="string-functions">String Functions</h3>
+<pre><code class="language-python">spark.sql(&quot;&quot;&quot;
+    SELECT 
+        UPPER(name) as name_upper,
+        SUBSTR(name, 1, 3) as first_3_chars,
+        LENGTH(name) as name_length
+    FROM employees
+&quot;&quot;&quot;).show()
+</code></pre>
+<h3 id="date-functions">Date Functions</h3>
+<pre><code class="language-python">spark.sql(&quot;&quot;&quot;
+    SELECT 
+        CURRENT_DATE as today,
+        DATE_ADD(CURRENT_DATE, 30) as in_30_days,
+        YEAR(hire_date) as hire_year
+    FROM employees
+&quot;&quot;&quot;).show()
+</code></pre>
+<h3 id="conditional-functions">Conditional Functions</h3>
+<pre><code class="language-python">spark.sql(&quot;&quot;&quot;
+    SELECT 
+        CASE 
+            WHEN salary &gt; 100000 THEN 'High'
+            WHEN salary &gt; 75000 THEN 'Medium'
+            ELSE 'Low'
+        END as salary_level
+    FROM employees
+&quot;&quot;&quot;).show()
+</code></pre>
+<h2 id="dataframe-api-vs-sql">DataFrame API vs SQL</h2>
+<p>Both approaches achieve the same results:</p>
+<pre><code class="language-python"># DataFrame API
+employees.filter(col(&quot;salary&quot;) &gt; 80000) \
+    .select(&quot;name&quot;, &quot;salary&quot;) \
+    .show()
+
+# SQL
+spark.sql(&quot;&quot;&quot;
+    SELECT name, salary 
+    FROM employees 
+    WHERE salary &gt; 80000
+&quot;&quot;&quot;).show()
+</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<ol>
+<li><strong>Use SQL for analytics</strong> - It's intuitive and well-optimized</li>
+<li><strong>Use DataFrame API for complex logic</strong> - Better for programmatic access</li>
+<li><strong>Mix both</strong> - Use whichever is clearest</li>
+<li><strong>Use predicate pushdown</strong> - Filters are pushed down automatically</li>
+<li><strong>Partition data</strong> - For better query performance</li>
+</ol>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Learn <a href="../06-reading-writing-data/">Data I/O</a></li>
+<li>Explore <a href="../performance-tuning/">Performance Tuning</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../04-working-with-dataframes/" class="btn btn-neutral float-left" title="Working with DataFrames"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../06-reading-writing-data/" class="btn btn-neutral float-right" title="Reading & Writing Data">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../04-working-with-dataframes/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../06-reading-writing-data/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

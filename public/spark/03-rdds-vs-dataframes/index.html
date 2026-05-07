@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>RDDs vs DataFrames - Databricks Tutorials</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "RDDs vs DataFrames";
+        var mkdocs_page_input_path = "spark/03-rdds-vs-dataframes.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Databricks Tutorials
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Spark</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-installation-setup/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../02-spark-fundamentals/">Fundamentals</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">RDDs vs DataFrames</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#quick-comparison">Quick Comparison</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#when-to-use-each">When to Use Each</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#use-rdd-when">Use RDD When:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#use-dataframe-when">Use DataFrame When:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#rdd-approach">RDD Approach</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dataframe-approach">DataFrame Approach</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#performance-comparison">Performance Comparison</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#interoperability">Interoperability</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#convert-rdd-to-dataframe">Convert RDD to DataFrame</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#convert-dataframe-to-rdd">Convert DataFrame to RDD</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#best-practices">Best Practices</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04-working-with-dataframes/">Working with DataFrames</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05-spark-sql-basics/">Spark SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06-reading-writing-data/">Reading & Writing Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../performance-tuning/">Performance Tuning</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Databricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/setup/">Setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/workspace/">Workspace & Clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/notebooks/">Notebooks</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Azure Databricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/setup/">Setup on Azure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/integration/">Integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/cost/">Cost Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/setup/">Setup Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/troubleshooting/">Troubleshooting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/resources/">Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/best-practices/">Best Practices</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">Contributing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../MIGRATION_SUMMARY/">Migration Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../PROJECT_COMPLETION/">Completion Report</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Databricks Tutorials</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Spark</li>
+      <li class="breadcrumb-item active">RDDs vs DataFrames</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="rdds-vs-dataframes">RDDs vs DataFrames</h1>
+<h2 id="quick-comparison">Quick Comparison</h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>RDD</th>
+<th>DataFrame</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td>Generic collection</td>
+<td>Structured collection with schema</td>
+</tr>
+<tr>
+<td>Schema</td>
+<td>No schema</td>
+<td>Has schema</td>
+</tr>
+<tr>
+<td>Optimization</td>
+<td>No built-in optimization</td>
+<td>Catalyst optimizer</td>
+</tr>
+<tr>
+<td>SQL</td>
+<td>No SQL support</td>
+<td>Full SQL support</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>Generally slower</td>
+<td>Much faster</td>
+</tr>
+<tr>
+<td>Ease of Use</td>
+<td>More functional</td>
+<td>More SQL-like</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>Store objects</td>
+<td>Columnar format</td>
+</tr>
+<tr>
+<td>Use Case</td>
+<td>Unstructured data</td>
+<td>Structured data</td>
+</tr>
+</tbody>
+</table>
+<h2 id="when-to-use-each">When to Use Each</h2>
+<h3 id="use-rdd-when">Use RDD When:</h3>
+<ul>
+<li>Working with unstructured data</li>
+<li>Need low-level transformations</li>
+<li>Data doesn't fit tabular format</li>
+<li>Need fine-grained control</li>
+</ul>
+<h3 id="use-dataframe-when">Use DataFrame When:</h3>
+<ul>
+<li>Working with structured/semi-structured data</li>
+<li>Need SQL operations</li>
+<li>Performance is critical</li>
+<li>Working with large datasets</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<h3 id="rdd-approach">RDD Approach</h3>
+<pre><code class="language-python">from pyspark import SparkContext
+
+sc = SparkContext(&quot;local&quot;, &quot;RDD Example&quot;)
+
+logs = sc.parallelize([
+    &quot;2024-01-01 ERROR: Connection failed&quot;,
+    &quot;2024-01-01 INFO: User login&quot;,
+    &quot;2024-01-02 ERROR: Memory exceeded&quot;
+])
+
+errors = (logs
+    .filter(lambda x: &quot;ERROR&quot; in x)
+    .map(lambda x: x.split(&quot; &quot;)[1:])
+)
+
+errors.collect()
+</code></pre>
+<h3 id="dataframe-approach">DataFrame Approach</h3>
+<pre><code class="language-python">from pyspark.sql import SparkSession
+from pyspark.sql.functions import col
+
+spark = SparkSession.builder.appName(&quot;DataFrame Example&quot;).getOrCreate()
+
+logs = spark.createDataFrame([
+    (&quot;2024-01-01&quot;, &quot;ERROR&quot;, &quot;Connection failed&quot;),
+    (&quot;2024-01-01&quot;, &quot;INFO&quot;, &quot;User login&quot;),
+    (&quot;2024-01-02&quot;, &quot;ERROR&quot;, &quot;Memory exceeded&quot;)
+], [&quot;date&quot;, &quot;level&quot;, &quot;message&quot;])
+
+logs.filter(col(&quot;level&quot;) == &quot;ERROR&quot;).select(&quot;date&quot;, &quot;message&quot;).show()
+</code></pre>
+<h2 id="performance-comparison">Performance Comparison</h2>
+<p>DataFrame is typically <strong>10-100x faster</strong> than RDD for most operations!</p>
+<h2 id="interoperability">Interoperability</h2>
+<h3 id="convert-rdd-to-dataframe">Convert RDD to DataFrame</h3>
+<pre><code class="language-python">rdd = spark.sparkContext.parallelize([(1, &quot;a&quot;), (2, &quot;b&quot;)])
+df = rdd.toDF([&quot;id&quot;, &quot;value&quot;])
+</code></pre>
+<h3 id="convert-dataframe-to-rdd">Convert DataFrame to RDD</h3>
+<pre><code class="language-python">rdd = df.rdd
+</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<ol>
+<li><strong>Use DataFrames by default</strong> - They're faster and easier</li>
+<li><strong>Use RDDs only when necessary</strong> - Unstructured data only</li>
+<li><strong>Avoid RDD ↔ DataFrame cycles</strong> - Stick with one format</li>
+<li><strong>Cache strategically</strong> - Cache intermediate results</li>
+<li><strong>Use SQL when possible</strong> - Highly optimized</li>
+</ol>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Continue with <a href="../04-working-with-dataframes/">Working with DataFrames</a></li>
+<li>Explore <a href="../05-spark-sql-basics/">Spark SQL</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../02-spark-fundamentals/" class="btn btn-neutral float-left" title="Fundamentals"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../04-working-with-dataframes/" class="btn btn-neutral float-right" title="Working with DataFrames">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../02-spark-fundamentals/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../04-working-with-dataframes/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Setup - Databricks Tutorials</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Setup";
+        var mkdocs_page_input_path = "databricks/setup.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Databricks Tutorials
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Spark</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/01-installation-setup/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/02-spark-fundamentals/">Fundamentals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/03-rdds-vs-dataframes/">RDDs vs DataFrames</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/04-working-with-dataframes/">Working with DataFrames</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/05-spark-sql-basics/">Spark SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/06-reading-writing-data/">Reading & Writing Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/performance-tuning/">Performance Tuning</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Databricks</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Setup</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#step-1-create-account">Step 1: Create Account</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-2-create-a-cluster">Step 2: Create a Cluster</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-3-create-a-notebook">Step 3: Create a Notebook</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-4-write-your-first-code">Step 4: Write Your First Code</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#key-databricks-features">Key Databricks Features</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#magic-commands">Magic Commands</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#display-function">Display Function</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#collaborative-notebooks">Collaborative Notebooks</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#workspace-organization">Workspace Organization</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../workspace/">Workspace & Clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../notebooks/">Notebooks</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Azure Databricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/setup/">Setup on Azure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/integration/">Integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/cost/">Cost Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/setup/">Setup Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/troubleshooting/">Troubleshooting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/resources/">Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/best-practices/">Best Practices</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">Contributing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../MIGRATION_SUMMARY/">Migration Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../PROJECT_COMPLETION/">Completion Report</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Databricks Tutorials</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Databricks</li>
+      <li class="breadcrumb-item active">Setup</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="getting-started-with-databricks">Getting Started with Databricks</h1>
+<h2 id="step-1-create-account">Step 1: Create Account</h2>
+<p>Visit https://community.cloud.databricks.com/ and sign up for a free account.</p>
+<h2 id="step-2-create-a-cluster">Step 2: Create a Cluster</h2>
+<ol>
+<li>In the sidebar, click <strong>Clusters</strong></li>
+<li>Click <strong>Create Cluster</strong></li>
+<li>Configure:</li>
+<li>Cluster name: Give it a meaningful name</li>
+<li>Databricks Runtime: Select 14.3 LTS or newer</li>
+<li>Worker nodes: Start with 2-4 workers</li>
+<li>Node type: Choose based on workload</li>
+<li>Click <strong>Create Cluster</strong></li>
+</ol>
+<p>Wait for the cluster to start (5-10 minutes).</p>
+<h2 id="step-3-create-a-notebook">Step 3: Create a Notebook</h2>
+<ol>
+<li>Click <strong>Workspace</strong> → <strong>Create</strong> → <strong>Notebook</strong></li>
+<li>Name your notebook</li>
+<li>Choose <strong>Python</strong> as the language</li>
+<li>Attach to your cluster</li>
+</ol>
+<h2 id="step-4-write-your-first-code">Step 4: Write Your First Code</h2>
+<pre><code class="language-python"># Read data
+df = spark.read.csv(&quot;/databricks-datasets/iris/iris.csv&quot;, header=True, inferSchema=True)
+
+# Display
+display(df)
+
+# Run SQL
+df.createOrReplaceTempView(&quot;iris&quot;)
+spark.sql(&quot;SELECT COUNT(*) FROM iris&quot;).show()
+</code></pre>
+<h2 id="key-databricks-features">Key Databricks Features</h2>
+<h3 id="magic-commands">Magic Commands</h3>
+<pre><code class="language-python">%python     # Python cell
+%sql        # SQL cell
+%markdown   # Markdown cell
+%sh         # Shell commands
+%run        # Run another notebook
+</code></pre>
+<h3 id="display-function">Display Function</h3>
+<p>The <code>display()</code> function provides:
+- Auto-visualization
+- Interactive exploration
+- Performance optimization</p>
+<pre><code class="language-python">display(df)
+</code></pre>
+<h3 id="collaborative-notebooks">Collaborative Notebooks</h3>
+<ul>
+<li>Share notebooks with team members</li>
+<li>Real-time collaboration</li>
+<li>Version history</li>
+<li>Comments and discussions</li>
+</ul>
+<h2 id="workspace-organization">Workspace Organization</h2>
+<pre><code>/Workspace/
+  /Users/
+    /user@example.com/
+      /MyNotebooks/
+  /Shared/
+  /Repos/
+</code></pre>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Explore <a href="../workspace/">Workspace &amp; Clusters</a></li>
+<li>Learn about <a href="../notebooks/">Notebooks</a></li>
+<li>Try running examples from /databricks-datasets/</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../" class="btn btn-neutral float-left" title="Getting Started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../workspace/" class="btn btn-neutral float-right" title="Workspace & Clusters">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../workspace/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

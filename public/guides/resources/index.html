@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Resources - Databricks Tutorials</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Resources";
+        var mkdocs_page_input_path = "guides/resources.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Databricks Tutorials
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Spark</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/01-installation-setup/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/02-spark-fundamentals/">Fundamentals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/03-rdds-vs-dataframes/">RDDs vs DataFrames</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/04-working-with-dataframes/">Working with DataFrames</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/05-spark-sql-basics/">Spark SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/06-reading-writing-data/">Reading & Writing Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/performance-tuning/">Performance Tuning</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Databricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/setup/">Setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/workspace/">Workspace & Clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/notebooks/">Notebooks</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Azure Databricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/setup/">Setup on Azure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/integration/">Integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/cost/">Cost Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../setup/">Setup Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Resources</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#official-documentation">Official Documentation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#apache-spark">Apache Spark</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#databricks">Databricks</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#azure-databricks">Azure Databricks</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#learning-materials">Learning Materials</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#beginner-tutorials">Beginner Tutorials</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#intermediate-topics">Intermediate Topics</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#advanced-topics">Advanced Topics</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#key-concepts">Key Concepts</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#rdds-resilient-distributed-datasets">RDDs (Resilient Distributed Datasets)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dataframes">DataFrames</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#delta-lake">Delta Lake</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#mlflow">MLflow</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tools-and-libraries">Tools and Libraries</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#essential-libraries">Essential Libraries</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#community-resources">Community Resources</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#forums">Forums</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#events">Events</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#newsletters">Newsletters</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example-projects">Example Projects</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#etl-pipeline">ETL Pipeline</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#machine-learning">Machine Learning</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#real-time-streaming">Real-time Streaming</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#best-practices-checklist">Best Practices Checklist</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#certification">Certification</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#databricks-certified">Databricks Certified</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../best-practices/">Best Practices</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">Contributing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../MIGRATION_SUMMARY/">Migration Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../PROJECT_COMPLETION/">Completion Report</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Databricks Tutorials</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Guides</li>
+      <li class="breadcrumb-item active">Resources</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="resources">Resources</h1>
+<p>Official documentation and learning materials.</p>
+<h2 id="official-documentation">Official Documentation</h2>
+<h3 id="apache-spark">Apache Spark</h3>
+<ul>
+<li><strong>Official Site:</strong> https://spark.apache.org</li>
+<li><strong>PySpark API:</strong> https://spark.apache.org/docs/latest/api/python</li>
+<li><strong>Documentation:</strong> https://spark.apache.org/documentation.html</li>
+<li><strong>GitHub:</strong> https://github.com/apache/spark</li>
+</ul>
+<h3 id="databricks">Databricks</h3>
+<ul>
+<li><strong>Official Site:</strong> https://www.databricks.com</li>
+<li><strong>Documentation:</strong> https://docs.databricks.com</li>
+<li><strong>Best Practices:</strong> https://docs.databricks.com/en/getting-started/index.html</li>
+<li><strong>Community:</strong> https://community.databricks.com</li>
+</ul>
+<h3 id="azure-databricks">Azure Databricks</h3>
+<ul>
+<li><strong>Azure Docs:</strong> https://learn.microsoft.com/en-us/azure/databricks/</li>
+<li><strong>Training:</strong> https://learn.microsoft.com/en-us/training/paths/perform-data-engineering-with-azure-databricks/</li>
+<li><strong>Quickstart:</strong> https://learn.microsoft.com/en-us/azure/databricks/getting-started/index</li>
+</ul>
+<h2 id="learning-materials">Learning Materials</h2>
+<h3 id="beginner-tutorials">Beginner Tutorials</h3>
+<ul>
+<li>Databricks Academy: https://academy.databricks.com</li>
+<li>Udemy Spark courses</li>
+<li>YouTube: DataTalks.Club, James Briggs</li>
+</ul>
+<h3 id="intermediate-topics">Intermediate Topics</h3>
+<ul>
+<li>Delta Lake: https://delta.io/</li>
+<li>MLflow: https://mlflow.org/</li>
+<li>Apache Spark configuration tuning</li>
+</ul>
+<h3 id="advanced-topics">Advanced Topics</h3>
+<ul>
+<li>Catalyst Optimizer internals</li>
+<li>Tungsten memory management</li>
+<li>Custom data source APIs</li>
+</ul>
+<h2 id="key-concepts">Key Concepts</h2>
+<h3 id="rdds-resilient-distributed-datasets">RDDs (Resilient Distributed Datasets)</h3>
+<ul>
+<li>Low-level API</li>
+<li>Immutable distributed collections</li>
+<li>Use for unstructured data or fine-grained control</li>
+</ul>
+<h3 id="dataframes">DataFrames</h3>
+<ul>
+<li>High-level API</li>
+<li>SQL-like operations</li>
+<li>Use for structured data</li>
+</ul>
+<h3 id="delta-lake">Delta Lake</h3>
+<ul>
+<li>ACID transactions</li>
+<li>Time travel</li>
+<li>Schema enforcement</li>
+</ul>
+<h3 id="mlflow">MLflow</h3>
+<ul>
+<li>Model lifecycle management</li>
+<li>Experiment tracking</li>
+<li>Model registry</li>
+</ul>
+<h2 id="tools-and-libraries">Tools and Libraries</h2>
+<h3 id="essential-libraries">Essential Libraries</h3>
+<pre><code>pyspark          # Spark Python API
+pandas           # Data manipulation
+numpy            # Numerical computing
+scikit-learn     # Machine learning
+matplotlib       # Visualization
+</code></pre>
+<h3 id="installation">Installation</h3>
+<pre><code class="language-bash">pip install pyspark pandas numpy scikit-learn matplotlib
+</code></pre>
+<h2 id="community-resources">Community Resources</h2>
+<h3 id="forums">Forums</h3>
+<ul>
+<li>Stack Overflow (tag: pyspark)</li>
+<li>Databricks Community Forum</li>
+<li>Reddit: r/apachespark, r/databricks</li>
+</ul>
+<h3 id="events">Events</h3>
+<ul>
+<li>Spark Summit (annual conference)</li>
+<li>Databricks events and webinars</li>
+<li>Local meetups and user groups</li>
+</ul>
+<h3 id="newsletters">Newsletters</h3>
+<ul>
+<li>Databricks blog: https://www.databricks.com/blog</li>
+<li>Apache Spark mailing list</li>
+<li>Data Engineering Weekly</li>
+</ul>
+<h2 id="example-projects">Example Projects</h2>
+<h3 id="etl-pipeline">ETL Pipeline</h3>
+<ol>
+<li>Read from cloud storage</li>
+<li>Transform and clean data</li>
+<li>Write to data lake</li>
+</ol>
+<h3 id="machine-learning">Machine Learning</h3>
+<ol>
+<li>Load and prepare data</li>
+<li>Train model with MLflow</li>
+<li>Register and deploy</li>
+</ol>
+<h3 id="real-time-streaming">Real-time Streaming</h3>
+<ol>
+<li>Ingest Kafka/Events Hub data</li>
+<li>Process with Spark Streaming</li>
+<li>Write aggregations to Delta</li>
+</ol>
+<h2 id="best-practices-checklist">Best Practices Checklist</h2>
+<ul>
+<li>[ ] Use DataFrames over RDDs</li>
+<li>[ ] Enable adaptive query execution</li>
+<li>[ ] Partition data appropriately</li>
+<li>[ ] Use predicate pushdown in joins</li>
+<li>[ ] Cache frequently accessed data</li>
+<li>[ ] Monitor cluster performance</li>
+<li>[ ] Use Delta for ACID guarantees</li>
+<li>[ ] Track experiments with MLflow</li>
+</ul>
+<h2 id="certification">Certification</h2>
+<h3 id="databricks-certified">Databricks Certified</h3>
+<ul>
+<li>Databricks Certified Associate Developer</li>
+<li>Databricks Certified Professional Data Engineer</li>
+<li>Exam practice: https://www.databricks.com/learn/certification</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Take Databricks Academy course</li>
+<li>Complete a hands-on project</li>
+<li>Join community and ask questions</li>
+<li>Practice with real datasets</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../troubleshooting/" class="btn btn-neutral float-left" title="Troubleshooting"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../best-practices/" class="btn btn-neutral float-right" title="Best Practices">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../troubleshooting/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../best-practices/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

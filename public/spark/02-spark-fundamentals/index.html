@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Fundamentals - Databricks Tutorials</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Fundamentals";
+        var mkdocs_page_input_path = "spark/02-spark-fundamentals.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Databricks Tutorials
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Spark</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../01-installation-setup/">Installation</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Fundamentals</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#core-concepts">Core Concepts</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#what-is-apache-spark">What is Apache Spark?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#spark-architecture">Spark Architecture</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#execution-modes">Execution Modes</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rdd-resilient-distributed-dataset">RDD (Resilient Distributed Dataset)</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#what-is-an-rdd">What is an RDD?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-rdds">Creating RDDs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rdd-operations">RDD Operations</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dataframe">DataFrame</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#what-is-a-dataframe">What is a DataFrame?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-dataframes">Creating DataFrames</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sparksession">SparkSession</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#practice-exercise">Practice Exercise</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../03-rdds-vs-dataframes/">RDDs vs DataFrames</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../04-working-with-dataframes/">Working with DataFrames</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../05-spark-sql-basics/">Spark SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../06-reading-writing-data/">Reading & Writing Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../performance-tuning/">Performance Tuning</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Databricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/setup/">Setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/workspace/">Workspace & Clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/notebooks/">Notebooks</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Azure Databricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/setup/">Setup on Azure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/integration/">Integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/cost/">Cost Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/setup/">Setup Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/troubleshooting/">Troubleshooting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/resources/">Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/best-practices/">Best Practices</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">Contributing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../MIGRATION_SUMMARY/">Migration Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../PROJECT_COMPLETION/">Completion Report</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Databricks Tutorials</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Spark</li>
+      <li class="breadcrumb-item active">Fundamentals</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="spark-fundamentals">Spark Fundamentals</h1>
+<h2 id="core-concepts">Core Concepts</h2>
+<h3 id="what-is-apache-spark">What is Apache Spark?</h3>
+<p>Apache Spark is a fast, distributed computing framework for processing large-scale data. It provides APIs in Python, Java, Scala, and SQL.</p>
+<p><strong>Key Features</strong>:
+- <strong>Fast</strong>: In-memory computation, 100x faster than Hadoop MapReduce
+- <strong>Distributed</strong>: Process data across multiple machines
+- <strong>General-purpose</strong>: Batch processing, streaming, ML, SQL
+- <strong>Easy to use</strong>: High-level APIs</p>
+<h3 id="spark-architecture">Spark Architecture</h3>
+<pre><code>┌─────────────────────────────────┐
+│     Spark Application (Driver)  │
+├─────────────────────────────────┤
+│     SparkContext / SparkSession │
+├─────────────────────────────────┤
+│   Cluster Manager (YARN/Mesos)  │
+├─────────────────────────────────┤
+│ Executor | Executor | Executor  │
+│ (tasks)  | (tasks)  | (tasks)   │
+└─────────────────────────────────┘
+</code></pre>
+<h2 id="execution-modes">Execution Modes</h2>
+<ul>
+<li><strong>Local Mode</strong>: Run on single machine</li>
+<li><strong>Cluster Mode</strong>: Run on Spark cluster</li>
+<li><strong>YARN Mode</strong>: Run on Hadoop YARN</li>
+<li><strong>Kubernetes Mode</strong>: Run on K8s</li>
+</ul>
+<h2 id="rdd-resilient-distributed-dataset">RDD (Resilient Distributed Dataset)</h2>
+<h3 id="what-is-an-rdd">What is an RDD?</h3>
+<ul>
+<li>Fundamental data structure of Spark</li>
+<li>Immutable distributed collection</li>
+<li>Can be processed in parallel</li>
+<li>Fault-tolerant</li>
+</ul>
+<h3 id="creating-rdds">Creating RDDs</h3>
+<pre><code class="language-python">from pyspark import SparkContext
+
+sc = SparkContext(&quot;local&quot;, &quot;RDD Example&quot;)
+
+# From Python collection
+rdd1 = sc.parallelize([1, 2, 3, 4, 5])
+
+# From external storage
+rdd2 = sc.textFile(&quot;path/to/file.txt&quot;)
+
+# From another RDD
+rdd3 = rdd1.map(lambda x: x * 2)
+</code></pre>
+<h3 id="rdd-operations">RDD Operations</h3>
+<p><strong>Transformations</strong> (lazy):</p>
+<pre><code class="language-python">rdd2 = rdd1.map(lambda x: x * 2)
+rdd3 = rdd1.filter(lambda x: x &gt; 2)
+rdd4 = rdd1.flatMap(lambda x: [x, x*2])
+</code></pre>
+<p><strong>Actions</strong> (trigger execution):</p>
+<pre><code class="language-python">result = rdd1.collect()
+count = rdd1.count()
+first = rdd1.first()
+</code></pre>
+<h2 id="dataframe">DataFrame</h2>
+<h3 id="what-is-a-dataframe">What is a DataFrame?</h3>
+<ul>
+<li>Distributed collection of data organized in named columns</li>
+<li>Similar to SQL table or pandas DataFrame</li>
+<li>Optimized for SQL operations</li>
+<li><strong>Preferred over RDDs for most use cases</strong></li>
+</ul>
+<h3 id="creating-dataframes">Creating DataFrames</h3>
+<pre><code class="language-python">from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName(&quot;Example&quot;).getOrCreate()
+
+# From list of tuples
+data = [(&quot;Alice&quot;, 25), (&quot;Bob&quot;, 30)]
+df = spark.createDataFrame(data, [&quot;name&quot;, &quot;age&quot;])
+
+# From pandas
+import pandas as pd
+pdf = pd.DataFrame({&quot;name&quot;: [&quot;Alice&quot;, &quot;Bob&quot;], &quot;age&quot;: [25, 30]})
+df = spark.createDataFrame(pdf)
+
+# From CSV
+df = spark.read.csv(&quot;data.csv&quot;, header=True, inferSchema=True)
+</code></pre>
+<h2 id="sparksession">SparkSession</h2>
+<p>SparkSession is the entry point for Spark functionality:</p>
+<pre><code class="language-python">spark = SparkSession.builder \
+    .appName(&quot;MyApp&quot;) \
+    .master(&quot;local&quot;) \
+    .getOrCreate()
+</code></pre>
+<h2 id="practice-exercise">Practice Exercise</h2>
+<p>Create a program that:
+1. Creates a DataFrame with sample data
+2. Filters rows based on a condition
+3. Calculates aggregations
+4. Displays results</p>
+<p>See <code>scripts/utils/spark_utils.py</code> for example utilities.</p>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Proceed to <a href="../03-rdds-vs-dataframes/">RDDs vs DataFrames</a></li>
+<li>Explore <a href="../04-working-with-dataframes/">Working with DataFrames</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../01-installation-setup/" class="btn btn-neutral float-left" title="Installation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../03-rdds-vs-dataframes/" class="btn btn-neutral float-right" title="RDDs vs DataFrames">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../01-installation-setup/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../03-rdds-vs-dataframes/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

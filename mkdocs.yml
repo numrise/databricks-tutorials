@@ -1,0 +1,38 @@
+site_name: Databricks Tutorials
+site_description: Comprehensive learning resource for Apache Spark, Databricks, and Azure Databricks
+site_dir: public
+docs_dir: docs
+theme:
+  name: readthedocs
+
+nav:
+  - Home: index.md
+  - Spark:
+    - Getting Started: spark/index.md
+    - Installation: spark/01-installation-setup.md
+    - Fundamentals: spark/02-spark-fundamentals.md
+    - RDDs vs DataFrames: spark/03-rdds-vs-dataframes.md
+    - Working with DataFrames: spark/04-working-with-dataframes.md
+    - Spark SQL: spark/05-spark-sql-basics.md
+    - Reading & Writing Data: spark/06-reading-writing-data.md
+    - Performance Tuning: spark/performance-tuning.md
+  - Databricks:
+    - Getting Started: databricks/index.md
+    - Setup: databricks/setup.md
+    - Workspace & Clusters: databricks/workspace.md
+    - Notebooks: databricks/notebooks.md
+  - Azure Databricks:
+    - Getting Started: azure-databricks/index.md
+    - Setup on Azure: azure-databricks/setup.md
+    - Integration: azure-databricks/integration.md
+    - Cost Optimization: azure-databricks/cost.md
+  - Guides:
+    - Setup Guide: guides/setup.md
+    - Troubleshooting: guides/troubleshooting.md
+    - Resources: guides/resources.md
+    - Best Practices: guides/best-practices.md
+  - Reference:
+    - Contributing: CONTRIBUTING.md
+    - Migration Summary: MIGRATION_SUMMARY.md
+    - Completion Report: PROJECT_COMPLETION.md
+  - About: about.md

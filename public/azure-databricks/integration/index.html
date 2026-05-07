@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Integration - Databricks Tutorials</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Integration";
+        var mkdocs_page_input_path = "azure-databricks/integration.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Databricks Tutorials
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Spark</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/01-installation-setup/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/02-spark-fundamentals/">Fundamentals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/03-rdds-vs-dataframes/">RDDs vs DataFrames</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/04-working-with-dataframes/">Working with DataFrames</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/05-spark-sql-basics/">Spark SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/06-reading-writing-data/">Reading & Writing Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/performance-tuning/">Performance Tuning</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Databricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/setup/">Setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/workspace/">Workspace & Clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/notebooks/">Notebooks</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Azure Databricks</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../setup/">Setup on Azure</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Integration</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#connecting-to-azure-services">Connecting to Azure Services</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#azure-data-lake-storage-gen2">Azure Data Lake Storage Gen2</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#azure-blob-storage">Azure Blob Storage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#azure-sql-database">Azure SQL Database</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#azure-cosmos-db">Azure Cosmos DB</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#data-factory-integration">Data Factory Integration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#power-bi-integration">Power BI Integration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#authentication-methods">Authentication Methods</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#personal-access-token">Personal Access Token</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#azure-ad-integration">Azure AD Integration</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#best-practices">Best Practices</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#accessing-secrets">Accessing Secrets</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cost/">Cost Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/setup/">Setup Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/troubleshooting/">Troubleshooting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/resources/">Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guides/best-practices/">Best Practices</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">Contributing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../MIGRATION_SUMMARY/">Migration Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../PROJECT_COMPLETION/">Completion Report</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Databricks Tutorials</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Azure Databricks</li>
+      <li class="breadcrumb-item active">Integration</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="azure-integration">Azure Integration</h1>
+<h2 id="connecting-to-azure-services">Connecting to Azure Services</h2>
+<h3 id="azure-data-lake-storage-gen2">Azure Data Lake Storage Gen2</h3>
+<pre><code class="language-python"># Using storage account name and key
+storage_account = &quot;mystorageaccount&quot;
+container = &quot;mycontainer&quot;
+key = &quot;your-storage-key&quot;
+
+spark.conf.set(
+    f&quot;fs.azure.account.key.{storage_account}.dfs.core.windows.net&quot;,
+    key
+)
+
+# Read Parquet
+df = spark.read.parquet(
+    f&quot;abfss://{container}@{storage_account}.dfs.core.windows.net/data/&quot;
+)
+
+# Write Delta
+df.write.format(&quot;delta&quot;).mode(&quot;overwrite&quot;).save(
+    f&quot;abfss://{container}@{storage_account}.dfs.core.windows.net/delta/&quot;
+)
+</code></pre>
+<h3 id="azure-blob-storage">Azure Blob Storage</h3>
+<pre><code class="language-python">storage_account = &quot;mystorageaccount&quot;
+container = &quot;mycontainer&quot;
+key = &quot;your-storage-key&quot;
+
+spark.conf.set(f&quot;fs.azure.account.key.{storage_account}.blob.core.windows.net&quot;, key)
+
+df = spark.read.csv(f&quot;wasbs://{container}@{storage_account}.blob.core.windows.net/data.csv&quot;)
+</code></pre>
+<h3 id="azure-sql-database">Azure SQL Database</h3>
+<pre><code class="language-python">server = &quot;myserver.database.windows.net&quot;
+database = &quot;mydb&quot;
+table = &quot;dbo.mytable&quot;
+user = &quot;admin@myserver&quot;
+password = &quot;password&quot;
+url = f&quot;jdbc:sqlserver://{server}:1433;database={database};user={user}@{server};password={password};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30&quot;
+
+df = spark.read.format(&quot;jdbc&quot;) \
+    .option(&quot;url&quot;, url) \
+    .option(&quot;dbtable&quot;, table) \
+    .load()
+</code></pre>
+<h3 id="azure-cosmos-db">Azure Cosmos DB</h3>
+<pre><code class="language-python">cosmos_endpoint = &quot;https://myaccount.documents.azure.com:443/&quot;
+cosmos_masterkey = &quot;your-key&quot;
+cosmos_database = &quot;mydb&quot;
+cosmos_container = &quot;mycontainer&quot;
+
+df = spark.read.format(&quot;cosmos.oltp&quot;) \
+    .option(&quot;spark.cosmos.account.endpoint&quot;, cosmos_endpoint) \
+    .option(&quot;spark.cosmos.account.key&quot;, cosmos_masterkey) \
+    .option(&quot;spark.cosmos.database&quot;, cosmos_database) \
+    .option(&quot;spark.cosmos.container&quot;, cosmos_container) \
+    .load()
+</code></pre>
+<h2 id="data-factory-integration">Data Factory Integration</h2>
+<p>Use Azure Data Factory to orchestrate Databricks jobs:</p>
+<pre><code class="language-python"># In your Databricks notebook
+dbutils.widgets.text(&quot;pipeline_param&quot;, &quot;default_value&quot;)
+param = dbutils.widgets.get(&quot;pipeline_param&quot;)
+
+print(f&quot;Received parameter: {param}&quot;)
+</code></pre>
+<p>In Azure Data Factory:
+1. Create linked service for Databricks
+2. Add "Databricks Notebook" activity
+3. Configure notebook path and parameters
+4. Schedule pipeline</p>
+<h2 id="power-bi-integration">Power BI Integration</h2>
+<p>Connect Power BI to Databricks:</p>
+<ol>
+<li>In Power BI Desktop: <strong>Get Data</strong> → <strong>More...</strong></li>
+<li>Search for "Databricks"</li>
+<li>Configure connection:</li>
+<li>Server hostname</li>
+<li>HTTP path</li>
+<li>Personal access token</li>
+<li>Create visualizations</li>
+</ol>
+<h2 id="authentication-methods">Authentication Methods</h2>
+<h3 id="personal-access-token">Personal Access Token</h3>
+<pre><code class="language-python"># Create token in Databricks
+# Settings → User Settings → Access Tokens
+
+token = &quot;dapi123456...&quot;
+workspace_url = &quot;https://myworkspace.azuredatabricks.net&quot;
+
+# Use in API calls
+headers = {&quot;Authorization&quot;: f&quot;Bearer {token}&quot;}
+</code></pre>
+<h3 id="azure-ad-integration">Azure AD Integration</h3>
+<p>Databricks automatically integrates with Azure AD for authentication. All workspace access uses Azure AD credentials.</p>
+<h2 id="best-practices">Best Practices</h2>
+<ol>
+<li><strong>Use Managed Identities</strong> - For service-to-service authentication</li>
+<li><strong>Store Secrets in Azure Key Vault</strong> - Not in code</li>
+<li><strong>Enable VNet Integration</strong> - For network security</li>
+<li><strong>Use Service Principals</strong> - For automation</li>
+<li><strong>Enable Azure Logging</strong> - For audit trails</li>
+</ol>
+<h2 id="accessing-secrets">Accessing Secrets</h2>
+<p>From Azure Key Vault:</p>
+<pre><code class="language-python">from databricks.sdk import WorkspaceClient
+import os
+
+# Store Key Vault URL as environment variable
+kv_url = os.environ.get(&quot;KEYVAULT_URL&quot;)
+
+# Or use Databricks secrets:
+token = dbutils.secrets.get(scope=&quot;myscope&quot;, key=&quot;mykey&quot;)
+</code></pre>
+<h2 id="next-steps">Next Steps</h2>
+<ul>
+<li>Learn <a href="../cost/">Cost Optimization</a></li>
+<li>Explore data pipeline patterns</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../setup/" class="btn btn-neutral float-left" title="Setup on Azure"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../cost/" class="btn btn-neutral float-right" title="Cost Optimization">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../setup/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../cost/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

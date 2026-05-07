@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Comprehensive learning resource for Apache Spark, Databricks, and Azure Databricks" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Databricks Tutorials</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> Databricks Tutorials
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick Start</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-install-dependencies">1. Install Dependencies</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-setup-local-spark">2. Setup Local Spark</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-verify-installation">3. Verify Installation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#learning-paths">📚 Learning Paths</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#path-1-spark-fundamentals">Path 1: Spark Fundamentals</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#path-2-data-engineering">Path 2: Data Engineering</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#path-3-databricks-platform">Path 3: Databricks Platform</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#path-4-azure-integration">Path 4: Azure Integration</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#available-resources">🛠️ Available Resources</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#scripts">Scripts</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#documentation">Documentation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#full-documentation">📖 Full Documentation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contributing">🤝 Contributing</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#license">📝 License</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Spark</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="spark/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="spark/01-installation-setup/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="spark/02-spark-fundamentals/">Fundamentals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="spark/03-rdds-vs-dataframes/">RDDs vs DataFrames</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="spark/04-working-with-dataframes/">Working with DataFrames</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="spark/05-spark-sql-basics/">Spark SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="spark/06-reading-writing-data/">Reading & Writing Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="spark/performance-tuning/">Performance Tuning</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Databricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="databricks/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="databricks/setup/">Setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="databricks/workspace/">Workspace & Clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="databricks/notebooks/">Notebooks</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Azure Databricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="azure-databricks/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="azure-databricks/setup/">Setup on Azure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="azure-databricks/integration/">Integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="azure-databricks/cost/">Cost Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="guides/setup/">Setup Guide</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="guides/troubleshooting/">Troubleshooting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="guides/resources/">Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="guides/best-practices/">Best Practices</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="CONTRIBUTING/">Contributing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="MIGRATION_SUMMARY/">Migration Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="PROJECT_COMPLETION/">Completion Report</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">Databricks Tutorials</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Home</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="databricks-tutorials">Databricks Tutorials</h1>
+<p>A comprehensive learning resource for Apache Spark, Databricks, and Azure Databricks - from beginner to advanced.</p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="1-install-dependencies">1. Install Dependencies</h3>
+<pre><code class="language-bash">pip install -r requirements.txt
+</code></pre>
+<h3 id="2-setup-local-spark">2. Setup Local Spark</h3>
+<pre><code class="language-bash">bash scripts/setup-spark.sh
+source ~/.bashrc
+</code></pre>
+<h3 id="3-verify-installation">3. Verify Installation</h3>
+<pre><code class="language-bash">python scripts/test_installation.py
+</code></pre>
+<h2 id="learning-paths">📚 Learning Paths</h2>
+<h3 id="path-1-spark-fundamentals">Path 1: Spark Fundamentals</h3>
+<p>Start here if you're new to Apache Spark:
+- <a href="spark/01-installation-setup/">Installation &amp; Setup</a>
+- <a href="spark/02-spark-fundamentals/">Spark Fundamentals</a>
+- <a href="spark/04-working-with-dataframes/">DataFrames</a>
+- <a href="spark/05-spark-sql-basics/">Spark SQL</a></p>
+<h3 id="path-2-data-engineering">Path 2: Data Engineering</h3>
+<p>Build practical data pipelines:
+- <a href="spark/03-rdds-vs-dataframes/">RDDs vs DataFrames</a>
+- <a href="spark/06-reading-writing-data/">Reading &amp; Writing Data</a>
+- <a href="spark/performance-tuning/">Performance Tuning</a></p>
+<h3 id="path-3-databricks-platform">Path 3: Databricks Platform</h3>
+<p>Deploy on managed infrastructure:
+- <a href="databricks/">Databricks Getting Started</a>
+- <a href="databricks/workspace/">Workspace &amp; Clusters</a>
+- <a href="databricks/notebooks/">Notebooks</a></p>
+<h3 id="path-4-azure-integration">Path 4: Azure Integration</h3>
+<p>Use on Microsoft Azure:
+- <a href="azure-databricks/setup/">Azure Databricks Setup</a>
+- <a href="azure-databricks/integration/">Azure Integration</a>
+- <a href="azure-databricks/cost/">Cost Optimization</a></p>
+<h2 id="available-resources">🛠️ Available Resources</h2>
+<h3 id="scripts">Scripts</h3>
+<ul>
+<li><code>scripts/word_count.py</code> - Classic MapReduce pattern</li>
+<li><code>scripts/etl_pipeline.py</code> - ETL pipeline example</li>
+<li><code>scripts/data_generator.py</code> - Generate sample datasets</li>
+<li><code>scripts/spark_utils.py</code> - Common utilities</li>
+<li><code>scripts/setup-spark.sh</code> - Automated Spark installation</li>
+<li><code>scripts/test_installation.py</code> - Verify Spark setup</li>
+</ul>
+<h3 id="documentation">Documentation</h3>
+<ul>
+<li><a href="guides/setup/">Setup Guide</a> - Installation and configuration</li>
+<li><a href="guides/troubleshooting/">Troubleshooting</a> - Common issues and solutions</li>
+<li><a href="guides/resources/">Learning Resources</a> - Official docs and courses</li>
+<li><a href="guides/best-practices/">Best Practices</a> - Production patterns</li>
+</ul>
+<h2 id="full-documentation">📖 Full Documentation</h2>
+<p>Browse the complete documentation using the navigation menu to the left (or top on mobile).</p>
+<h2 id="contributing">🤝 Contributing</h2>
+<p>We welcome contributions! Feel free to submit issues or pull requests.</p>
+<h2 id="license">📝 License</h2>
+<p>This repository is licensed under the MIT License. See <a href="../LICENSE">LICENSE</a> for details.</p>
+<hr />
+<p><strong>Version</strong>: 1.0 | <strong>Updated</strong>: May 2024 | <strong>Status</strong>: Production Ready</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="spark/" class="btn btn-neutral float-right" title="Getting Started">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="spark/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.5.3
+Build Date UTC : 2026-05-07 16:29:51.376474+00:00
+-->

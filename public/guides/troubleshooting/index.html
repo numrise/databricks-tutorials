@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Troubleshooting - Databricks Tutorials</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Troubleshooting";
+        var mkdocs_page_input_path = "guides/troubleshooting.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Databricks Tutorials
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Spark</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/01-installation-setup/">Installation</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/02-spark-fundamentals/">Fundamentals</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/03-rdds-vs-dataframes/">RDDs vs DataFrames</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/04-working-with-dataframes/">Working with DataFrames</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/05-spark-sql-basics/">Spark SQL</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/06-reading-writing-data/">Reading & Writing Data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../spark/performance-tuning/">Performance Tuning</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Databricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/setup/">Setup</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/workspace/">Workspace & Clusters</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../databricks/notebooks/">Notebooks</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Azure Databricks</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/">Getting Started</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/setup/">Setup on Azure</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/integration/">Integration</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../azure-databricks/cost/">Cost Optimization</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Guides</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../setup/">Setup Guide</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Troubleshooting</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#pyspark-installation-issues">PySpark Installation Issues</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#issue-javalangclassnotfoundexception">Issue: "java.lang.ClassNotFoundException"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#issue-spark_home-environment-variable-is-not-set">Issue: "SPARK_HOME environment variable is not set"</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#issue-modulenotfounderror-no-module-named-pyspark">Issue: "ModuleNotFoundError: No module named 'pyspark'"</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cluster-connection-issues">Cluster Connection Issues</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#issue-cannot-connect-to-databricks-cluster">Issue: Cannot connect to Databricks cluster</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#issue-cluster-wont-start">Issue: Cluster won't start</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#performance-issues">Performance Issues</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#issue-spark-job-runs-slowly">Issue: Spark job runs slowly</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#issue-out-of-memory-errors">Issue: Out of memory errors</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#data-access-issues">Data Access Issues</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#issue-cannot-read-from-cloud-storage">Issue: Cannot read from cloud storage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#issue-delta-lake-transaction-conflicts">Issue: Delta Lake transaction conflicts</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#notebook-issues">Notebook Issues</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#issue-notebook-wont-attach-to-cluster">Issue: Notebook won't attach to cluster</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#issue-run-command-fails">Issue: %run command fails</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sql-related-issues">SQL-Related Issues</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#issue-table-not-found-in-sql">Issue: Table not found in SQL</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#issue-slow-sql-queries">Issue: Slow SQL queries</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#debugging-tips">Debugging Tips</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting Help</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../resources/">Resources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../best-practices/">Best Practices</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../CONTRIBUTING/">Contributing</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../MIGRATION_SUMMARY/">Migration Summary</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../PROJECT_COMPLETION/">Completion Report</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../about/">About</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Databricks Tutorials</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Guides</li>
+      <li class="breadcrumb-item active">Troubleshooting</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="troubleshooting">Troubleshooting</h1>
+<p>Common issues and solutions.</p>
+<h2 id="pyspark-installation-issues">PySpark Installation Issues</h2>
+<h3 id="issue-javalangclassnotfoundexception">Issue: "java.lang.ClassNotFoundException"</h3>
+<p><strong>Cause:</strong> Java not installed or JAVA_HOME not set.</p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-bash"># Verify Java
+java -version
+
+# Set JAVA_HOME
+export JAVA_HOME=$(which java)
+
+# Or on macOS
+export JAVA_HOME=$(/usr/libexec/java_home)
+</code></pre>
+<h3 id="issue-spark_home-environment-variable-is-not-set">Issue: "SPARK_HOME environment variable is not set"</h3>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-bash"># Set temporarily
+export SPARK_HOME=~/spark
+
+# Or permanently in ~/.bashrc or ~/.zshrc
+echo 'export SPARK_HOME=~/spark' &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+<h3 id="issue-modulenotfounderror-no-module-named-pyspark">Issue: "ModuleNotFoundError: No module named 'pyspark'"</h3>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-bash"># Install PySpark
+pip install pyspark
+
+# Or upgrade
+pip install --upgrade pyspark
+</code></pre>
+<h2 id="cluster-connection-issues">Cluster Connection Issues</h2>
+<h3 id="issue-cannot-connect-to-databricks-cluster">Issue: Cannot connect to Databricks cluster</h3>
+<p><strong>Cause:</strong> Missing or invalid personal access token.</p>
+<p><strong>Solution:</strong>
+1. Generate token in Databricks workspace
+   - Settings → User Settings → Access Tokens
+2. Copy full token
+3. Configure in notebook or IDE</p>
+<h3 id="issue-cluster-wont-start">Issue: Cluster won't start</h3>
+<p><strong>Cause:</strong> Insufficient quota or resource limits.</p>
+<p><strong>Solution:</strong>
+1. Check Azure/AWS quota
+2. Reduce cluster size
+3. Choose different region/availability zone
+4. Contact cloud provider support</p>
+<h2 id="performance-issues">Performance Issues</h2>
+<h3 id="issue-spark-job-runs-slowly">Issue: Spark job runs slowly</h3>
+<p><strong>Common causes:</strong>
+- Small cluster size
+- Inefficient queries
+- Skewed data distribution
+- Network bottlenecks</p>
+<p><strong>Solutions:</strong></p>
+<pre><code class="language-python"># 1. Check execution plan
+df.explain()
+
+# 2. Increase parallelism
+df = df.repartition(100)
+
+# 3. Use cache for reused data
+df.cache()
+
+# 4. Use SQL for optimization
+spark.sql(&quot;SELECT * FROM data WHERE id &gt; 100&quot;).explain()
+</code></pre>
+<h3 id="issue-out-of-memory-errors">Issue: Out of memory errors</h3>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-python"># 1. Reduce data size
+df = df.limit(10000)
+
+# 2. Increase executor memory in cluster config
+# spark.executor.memory = 4g
+
+# 3. Use Spark built-in optimization
+spark.conf.set(&quot;spark.sql.adaptive.enabled&quot;, &quot;true&quot;)
+
+# 4. Stream large datasets instead of loading all
+df = spark.read.parquet(&quot;data/&quot;).limit(1000)
+</code></pre>
+<h2 id="data-access-issues">Data Access Issues</h2>
+<h3 id="issue-cannot-read-from-cloud-storage">Issue: Cannot read from cloud storage</h3>
+<p><strong>Cause:</strong> Missing credentials or permissions.</p>
+<p><strong>Azure Storage:</strong></p>
+<pre><code class="language-python"># Verify credentials
+spark.conf.set(
+    f&quot;fs.azure.account.key.{account}.dfs.core.windows.net&quot;,
+    key
+)
+</code></pre>
+<p><strong>AWS S3:</strong></p>
+<pre><code class="language-python">spark._jsc.hadoopConfiguration().set(&quot;fs.s3a.access.key&quot;, access_key)
+spark._jsc.hadoopConfiguration().set(&quot;fs.s3a.secret.key&quot;, secret_key)
+</code></pre>
+<h3 id="issue-delta-lake-transaction-conflicts">Issue: Delta Lake transaction conflicts</h3>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-python"># Use isolation level
+df.write.format(&quot;delta&quot;).mode(&quot;overwrite&quot;) \
+    .option(&quot;txnVersion&quot;, &quot;0&quot;) \
+    .save(&quot;path&quot;)
+
+# Or retry with backoff
+from time import sleep
+for i in range(3):
+    try:
+        df.write.format(&quot;delta&quot;).mode(&quot;overwrite&quot;).save(&quot;path&quot;)
+        break
+    except Exception as e:
+        if i &lt; 2:
+            sleep(2 ** i)  # Exponential backoff
+</code></pre>
+<h2 id="notebook-issues">Notebook Issues</h2>
+<h3 id="issue-notebook-wont-attach-to-cluster">Issue: Notebook won't attach to cluster</h3>
+<p><strong>Solution:</strong>
+1. Check cluster is running
+2. Verify you have attach permissions
+3. Restart cluster
+4. Try different cluster</p>
+<h3 id="issue-run-command-fails">Issue: %run command fails</h3>
+<p><strong>Cause:</strong> Notebook path incorrect or notebook doesn't exist.</p>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-python"># Correct path format
+%run ./path/to/notebook
+
+# Test path exists
+%sh ls -la /Workspace/Users/user@example.com/path/to/
+</code></pre>
+<h2 id="sql-related-issues">SQL-Related Issues</h2>
+<h3 id="issue-table-not-found-in-sql">Issue: Table not found in SQL</h3>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-python"># Create temporary view
+df.createOrReplaceTempView(&quot;mytable&quot;)
+
+# Or register in catalog
+df.write.format(&quot;delta&quot;).mode(&quot;overwrite&quot;).saveAsTable(&quot;mytable&quot;)
+</code></pre>
+<h3 id="issue-slow-sql-queries">Issue: Slow SQL queries</h3>
+<p><strong>Solution:</strong></p>
+<pre><code class="language-python"># Enable adaptive query execution
+spark.conf.set(&quot;spark.sql.adaptive.enabled&quot;, &quot;true&quot;)
+
+# Use proper joins
+df1.join(df2, &quot;id&quot;, &quot;inner&quot;)
+
+# Add explain to debug
+spark.sql(&quot;SELECT * FROM table WHERE col &gt; 100&quot;).explain()
+</code></pre>
+<h2 id="debugging-tips">Debugging Tips</h2>
+<ol>
+<li><strong>Enable verbose logging:</strong></li>
+</ol>
+<pre><code class="language-python">import logging
+logging.basicConfig(level=logging.DEBUG)
+</code></pre>
+<ol>
+<li><strong>Check Spark UI:</strong></li>
+<li>Go to cluster's Spark UI</li>
+<li>Monitor tasks and stages</li>
+<li>
+<p>Check driver/executor logs</p>
+</li>
+<li>
+<p><strong>Use dbutils for logging:</strong></p>
+</li>
+</ol>
+<pre><code class="language-python">dbutils.notebook.run(&quot;debug_notebook&quot;, 300, {&quot;param&quot;: &quot;value&quot;})
+</code></pre>
+<ol>
+<li><strong>Test in isolation:</strong></li>
+</ol>
+<pre><code class="language-python"># Create minimal reproducible example
+df = spark.createDataFrame([(1, &quot;test&quot;)], [&quot;id&quot;, &quot;name&quot;])
+df.show()
+</code></pre>
+<h2 id="getting-help">Getting Help</h2>
+<ul>
+<li>Check <a href="../resources/">Resources</a> for official documentation</li>
+<li>Review <a href="../best-practices/">Best Practices</a></li>
+<li>Search Databricks community forum</li>
+<li>Contact your cloud provider support</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../setup/" class="btn btn-neutral float-left" title="Setup Guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../resources/" class="btn btn-neutral float-right" title="Resources">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../setup/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../resources/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
