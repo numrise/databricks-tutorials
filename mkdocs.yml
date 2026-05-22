@@ -21,11 +21,19 @@ nav:
     - Setup: databricks/setup.md
     - Workspace & Clusters: databricks/workspace.md
     - Notebooks: databricks/notebooks.md
+    - Unity Catalog: databricks/unity_catalog.md
+    - Permissions & Access Control: databricks/permissions.md
+    - Terraform: databricks/terraform.md
   - Azure Databricks:
     - Getting Started: azure-databricks/index.md
     - Setup on Azure: azure-databricks/setup.md
     - Integration: azure-databricks/integration.md
     - Cost Optimization: azure-databricks/cost.md
+  - Data Governance:
+    - Overview: governance/index.md
+    - Collibra: governance/collibra.md
+    - Data Sharing & Stewardship (DSA): governance/dsa.md
+    - Data Usage Policies: governance/data_usage.md
   - Guides:
     - Setup Guide: guides/setup.md
     - Troubleshooting: guides/troubleshooting.md
